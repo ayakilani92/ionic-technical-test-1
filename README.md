@@ -10,7 +10,7 @@
 
 > Create a github account if you did nott have on https://github.com
 
- 2. Clone the project from https://github.com/amineD200/InoicTecTest.git
+ 2. Clone the project from https://github.com/amineD200/ionic-technical-test.git
 	``` bash
 	> $ git clone https.... 
 	```
