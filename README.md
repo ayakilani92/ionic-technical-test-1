@@ -1,5 +1,6 @@
 
 
+
 # **Mobelite: Ionic technical test**
 
 ## Get started
@@ -8,9 +9,9 @@
 
  1. Create a repository on your github account
 
-> Create a github account if you did nott have on https://github.com
+	> Create a github account on https://github.com if you didn't have an account
 
- 2. Clone the project from https://github.com/amineD200/ionic-technical-test.git
+ 2. Clone the project from this repo https://github.com/amineD200/ionic-technical-test.git
 	``` bash
 	> $ git clone https.... 
 	```
@@ -25,14 +26,14 @@
 
 ## Requirements:
 -  Commit related messages.
-- You should only commit code when a task or feature is completed, don't commit half-done work or a lot of tasks at the same time 
+- You should only commit code when a task or feature is completed, don't commit half-done work or a lot of tasks at the same time.
  - Write good commit messages, follow this template:
     > task-number message 
      e.g: * MITT-1 create the page listPosts... and add component... 
  - The code should be :
 	  - well-commented
       - well-organized (Use services, ...)      
- - Don't put the whole code in one file !
+ - Don't put the whole code in one file.
  - Use the ionic components. 
 
 #The APP
@@ -42,17 +43,17 @@ We want to create an hybrid application for our blog.
 
 - Get POST's list (GET)
 
-```
-https://jsonplaceholder.typicode.com/posts
-```
+	```
+	https://jsonplaceholder.typicode.com/posts
+	```
 - Get Post by ID  (GET)
-```
-https://jsonplaceholder.typicode.com/posts/3
-```
+	```
+	https://jsonplaceholder.typicode.com/posts/3
+	```
 - Get comments By Post ID (GET)
-```
-https://jsonplaceholder.typicode.com/posts/1/comments
-```
+	```
+	https://jsonplaceholder.typicode.com/posts/1/comments
+	```
 
 ## Tasks:
 
