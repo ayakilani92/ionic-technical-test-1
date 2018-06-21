@@ -1,0 +1,28 @@
+page-post-details {
+     ion-content.content {
+        background: #fafafa;
+        ion-card.card {
+            border: solid 1px#ededed;
+            box-shadow: none;
+            border-radius: 4px;
+            .card-content {
+                padding: 0;
+.post-title {
+                    background: #f8f8f8;
+                    color: #667486;
+                    padding: 13px 16px 14px;
+                    display: flex;
+                    align-items: center;
+                    p {
+                        font-size: medium;
+                    }
+}
+.idea-desc {
+                    padding-top: 13px;
+                    padding-bottom: 0;
+                }
+            }
+            
+}
+}
+}

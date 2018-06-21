@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>postDetails</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item-group *ngIf="post">
+    <ion-card>
+      <ion-card-content>
+        <ion-row  class="post-title" >
+          <p>{{ post.title }}</p>
+        </ion-row>
+        <ion-row class="post-desc">
+          <p>{{post.body}}</p>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-item-group>
+</ion-content>

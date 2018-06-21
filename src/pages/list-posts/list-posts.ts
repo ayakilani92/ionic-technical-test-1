@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 
-
 @IonicPage()
 @Component({
   selector: 'page-list-posts',
@@ -22,19 +21,20 @@ export class ListPostsPage {
 
     this.data.getPosts().subscribe(resp => {
       this.posts = resp;
-      console.log(this.posts);
       this.posts.forEach(post => {
         const length = 200;
-        post.resumebody = post.body.length > length ? post.body.substring(0, length) + "..." :
-          post.body;
-        console.log("trimmedString", post.resumebody)
+        post.resumebody = post.body.length > length ? post.body.substring(0, length) + "..." :post.body;
       });
     });
 
   }
 
-  openPost(post) {
-    console.log("post", post)
+/**
+   *  // go to details post
+   * @param id 
+   */
+  openPost(id) {
+    this.navCtrl.push('PostDetailsPage', { key: id });
   }
 
 }

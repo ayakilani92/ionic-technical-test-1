@@ -18,12 +18,21 @@ export class DataProvider {
       })
   }
 
+  //Return a single post by Id
+  getPostByID(id) {
+    return this.http.get(this.api + "/" + id)
+      .map(data => {
+        console.log(data);
+        return data;
+      });
+  }
+
+
 }
 
-/* export class Post {
+export class Post {
   id: number;
   userId: number;
   title: string;
   body: string;
-  resumebody:string
-}; */
+};

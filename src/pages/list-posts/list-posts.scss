@@ -12,11 +12,11 @@ page-list-posts {
                 }
                 .card-content {
                     padding: 0;
-                    .message-info .note {
+                    .post-info .note {
                         font-size: .7em;
                         color: #bcbcbc;
                     }
-                    ion-col.message-bady.col {
+                    ion-col.post-bady.col {
                         overflow: initial;
                         text-overflow: ellipsis;
                         display: -webkit-box;
