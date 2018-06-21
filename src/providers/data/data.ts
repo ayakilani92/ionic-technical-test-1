@@ -27,6 +27,16 @@ export class DataProvider {
       });
   }
 
+  getCommentOnPost(id) {
+    console.log("iddd", id)
+    return this.http.get(this.api + "/" + id + "/" + "comments")
+      .map(data => {
+        console.log(data);
+        return data;
+      });
+  }
+
+
 
 }
 
@@ -35,4 +45,12 @@ export class Post {
   userId: number;
   title: string;
   body: string;
+  comments: Array<Comment>;
 };
+export class Comment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}

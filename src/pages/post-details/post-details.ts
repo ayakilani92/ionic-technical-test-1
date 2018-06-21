@@ -8,8 +8,8 @@ import { DataProvider, Post } from '../../providers/data/data';
   templateUrl: 'post-details.html',
 })
 export class PostDetailsPage {
-  
-  post: any = new Post();
+
+  post: any = {};
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -17,11 +17,16 @@ export class PostDetailsPage {
 
     this.data.getPostByID(this.navParams.get('key')).subscribe(data => {
       this.post = data;
+      this.data.getCommentOnPost(this.post.id).subscribe(comments => {
+        this.post.comments = comments;
+        console.log("cooo", this.post.comments)
+      })
     })
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PostDetailsPage');
+  
+    
   }
 
 }

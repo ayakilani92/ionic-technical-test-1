@@ -24,10 +24,17 @@ page-list-posts {
                         -webkit-box-orient: vertical;
                     }
                 }
+                &.comments-list {
+                padding-bottom: 2em;
+                .comments-loop {
+                    border-bottom: solid 1px #f2f2f2;
+                    padding-bottom: .25em;
+                }
         } 
     }
     .button-clear:hover:not(.disable-hover) {
         background-color: rgba(0, 0, 0, 0);
     }
+}
 }
 

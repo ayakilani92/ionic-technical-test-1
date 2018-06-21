@@ -7,22 +7,38 @@ page-post-details {
             border-radius: 4px;
             .card-content {
                 padding: 0;
-.post-title {
+                 .post-info .note {
+                        font-size: .7em;
+                        color: #bcbcbc;
+                    }
+                .like-stats {
+                    margin-top: .75em;
+                    font-size: smaller;
+                    .col {
+                        padding: 0;
+                    }
+                    .dot-sep {
+                        margin: auto 1em;
+                    }
+                }
+                .post-title {
                     background: #f8f8f8;
                     color: #667486;
                     padding: 13px 16px 14px;
                     display: flex;
                     align-items: center;
+                    font-weight: bold;
                     p {
                         font-size: medium;
                     }
-}
-.idea-desc {
-                    padding-top: 13px;
+                }
+                .comment-desc {
+                    padding-top: 1px;
                     padding-bottom: 0;
+                    padding-left: 13px;
                 }
             }
             
-}
-}
+        }
+    }
 }

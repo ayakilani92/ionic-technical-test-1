@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>postDetails</ion-title>
+    <ion-title>Details post</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,13 +8,43 @@
   <ion-item-group *ngIf="post">
     <ion-card>
       <ion-card-content>
-        <ion-row  class="post-title" >
+        <ion-row class="post-title">
           <p>{{ post.title }}</p>
         </ion-row>
         <ion-row class="post-desc">
           <p>{{post.body}}</p>
         </ion-row>
+        <ion-row class="post-info">
+          <ion-col center text-right>
+            <ion-note *ngIf="post.comments">
+              {{post.comments.length|| 0 }} Commentaires
+            </ion-note>
+          </ion-col>
+        </ion-row>
       </ion-card-content>
     </ion-card>
   </ion-item-group>
+
+  <ion-item-group *ngIf="post.comments">
+    <ion-card class="comments-list">
+      <ion-card-content>
+        <ion-row class="post-title">
+          <p>Comments:</p>
+        </ion-row>
+        <div class="comments-loop" *ngFor="let item of post.comments">
+          <ion-card-header lines>
+            {{ item.email }}
+          </ion-card-header>
+
+          <ion-row class="comment-desc">
+            <ion-col auto>
+              <p>{{ item.name }}</p>
+            </ion-col>
+            <p>{{item.body}}</p>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-item-group>
+
 </ion-content>
