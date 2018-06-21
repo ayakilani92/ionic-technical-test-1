@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { Network } from '@ionic-native/network';
+
 @IonicPage()
 @Component({
   selector: 'page-list-posts',
@@ -10,19 +13,29 @@ import { AlertController } from 'ionic-angular';
 export class ListPostsPage {
 
   posts: any = [];
-  isConnected: boolean;
+  isConnected: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public data: DataProvider,
     public events: Events,
-    public alertCtrl: AlertController) {
+    public toastCtrl: ToastController,
+    private storage: Storage,
+    private network: Network) {
 
     this.events.subscribe('network:subscription', (network) => {
-      console.log(network);
       this.isConnected = network;
-      if (this.isConnected == false)
-        this.showAlert();
+      if (this.isConnected == false) {
+        this.toastCtrl.create({
+          message: 'You are not connected',
+          duration: 3000
+        }).present();
+        this.storage.get('listPosts').then((val) => {
+          if (val) {
+            this.posts = JSON.parse(val);
+          }
+        })
+      }
     });
 
   }
@@ -34,22 +47,35 @@ export class ListPostsPage {
         const length = 200;
         post.resumebody = post.body.length > length ? post.body.substring(0, length) + "..." : post.body;
       });
+      this.storage.set('listPosts', JSON.stringify(this.posts));
     });
   }
 
- // go to details post 
+
+  displayNetworkUpdate(connectionState: string) {
+    let networkType = this.network.type;
+
+    this.toastCtrl.create({
+      message: 'You are now ${connectionState} via ${networkType}',
+      duration: 3000
+    }).present();
+  }
+
+  ionViewDidEnter() {
+    this.network.onConnect().subscribe(() => {
+      console.log('network connected :)')
+      /*    this.displayNetworkUpdate(data.type); */
+    }, error => console.error(error));
+    this.network.onDisconnect().subscribe(() => {
+      console.log('network was disconnected :(');
+      /*   this.displayNetworkUpdate(data.type); */
+    }, error => console.error(error));
+  }
+
+  // go to details post 
   openPost(id) {
     this.navCtrl.push('PostDetailsPage', { key: id });
   }
 
-  //show alert when there is no internet connection.
-  showAlert() {
-    const alert = this.alertCtrl.create({
-      title: 'Ressayer !',
-      subTitle: 'Aucune connexion Internet nest disponible!',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
 
 }

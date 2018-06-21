@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class DataProvider {
   api: any = CONFIG.API;
+  
   constructor(public http: HttpClient) {
     console.log('Hello DataProvider Provider');
   }
@@ -27,6 +28,7 @@ export class DataProvider {
       });
   }
 
+  // Return the list of comments on post By id Post
   getCommentOnPost(id) {
     console.log("iddd", id)
     return this.http.get(this.api + "/" + id + "/" + "comments")
@@ -35,8 +37,6 @@ export class DataProvider {
         return data;
       });
   }
-
-
 
 }
 
@@ -47,6 +47,7 @@ export class Post {
   body: string;
   comments: Array<Comment>;
 };
+
 export class Comment {
   postId: number;
   id: number;
