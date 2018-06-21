@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ToastController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { Network } from '@ionic-native/network';
 
 @IonicPage()
 @Component({
@@ -20,16 +18,12 @@ export class ListPostsPage {
     public data: DataProvider,
     public events: Events,
     public toastCtrl: ToastController,
-    private storage: Storage,
-    private network: Network) {
+    private storage: Storage) {
 
     this.events.subscribe('network:subscription', (network) => {
       this.isConnected = network;
-      if (this.isConnected == false) {
-        this.toastCtrl.create({
-          message: 'You are not connected',
-          duration: 3000
-        }).present();
+      if (!this.isConnected) {
+        this.showToast('You are not connected');
         this.storage.get('listPosts').then((val) => {
           if (val) {
             this.posts = JSON.parse(val);
@@ -52,30 +46,18 @@ export class ListPostsPage {
   }
 
 
-  displayNetworkUpdate(connectionState: string) {
-    let networkType = this.network.type;
-
-    this.toastCtrl.create({
-      message: 'You are now ${connectionState} via ${networkType}',
-      duration: 3000
-    }).present();
-  }
-
-  ionViewDidEnter() {
-    this.network.onConnect().subscribe(() => {
-      console.log('network connected :)')
-      /*    this.displayNetworkUpdate(data.type); */
-    }, error => console.error(error));
-    this.network.onDisconnect().subscribe(() => {
-      console.log('network was disconnected :(');
-      /*   this.displayNetworkUpdate(data.type); */
-    }, error => console.error(error));
+  //show toast function
+  showToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 
   // go to details post 
   openPost(id) {
     this.navCtrl.push('PostDetailsPage', { key: id });
   }
-
 
 }

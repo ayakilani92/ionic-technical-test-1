@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ToastController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
-import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -21,13 +20,9 @@ export class PostDetailsPage {
 
     this.events.subscribe('network:subscription', (network) => {
       this.isConnected = network;
-      if (this.isConnected == false)
-        this.toastCtrl.create({
-          message: 'You are not connected',
-          duration: 3000
-        }).present();
-    });
-
+      if (!this.isConnected)
+        this.showToast('You are not connected');
+    })
   }
 
   ionViewDidLoad() {
@@ -39,4 +34,13 @@ export class PostDetailsPage {
     })
   }
 
+  //show toast function
+  showToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
+  
 }
