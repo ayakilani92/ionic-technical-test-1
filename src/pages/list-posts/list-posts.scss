@@ -1,0 +1,33 @@
+page-list-posts {
+     ion-content.content {
+        background: #fafafa;
+         ion-card.card {
+            border: solid 1px#ededed;
+            box-shadow: none;
+            border-radius: 4px;
+                ion-card-header {
+                    color: #667486;
+                    font-weight: bold;
+                    white-space: initial;
+                }
+                .card-content {
+                    padding: 0;
+                    .message-info .note {
+                        font-size: .7em;
+                        color: #bcbcbc;
+                    }
+                    ion-col.message-bady.col {
+                        overflow: initial;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        line-height: 16px;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+        } 
+    }
+    .button-clear:hover:not(.disable-hover) {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
